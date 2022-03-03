@@ -1,4 +1,7 @@
 import express, {Application} from 'express';
+//importo los dos archivos ts que he creado en la carpeta routes cuando queda subrayado en rojo es que el archivo està vacìo
+import indexRoutes from './routes/indexRoutes';
+import gamesRoutes from './routes/gamesRoutes';
 
 class Server {
 
@@ -19,8 +22,11 @@ class Server {
     }
 
 //el método routes me sirve para configurar las rutas de mis servidores
+//this.app.use(indexRoutes); por defecto va a http://localhost:3000/
+// para definir otra ruta pongo this.app.use('/api/games',gamesRoutes); sería localhost:3000/api/games/
     routes():void{
-
+        this.app.use(indexRoutes);
+        this.app.use('/api/games',gamesRoutes);
     }
 
 //el método start es para inicializar el servidor ejecuta el listen
