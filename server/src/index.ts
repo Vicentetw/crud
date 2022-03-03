@@ -1,9 +1,37 @@
-let suma =0;
-let x=20;
-let y=30;
+import express, {Application} from 'express';
 
-function sumar(x:number, Y:number){
-    return x + Y;
-};
-console.log(sumar(20,30));
-console.log('sumar(20,30)');
+class Server {
+
+    public app: Application; 
+//express también devuelve un objeto y lo alojo en un propiedad de la clase app y la defino como Application 
+// app es public para poder utilizarla en otras partes
+    constructor(){
+        
+        this.app = express();
+        //configuraciòn para que ejecute mis mètodos de abajo
+        this.config();
+        this.routes();
+    }
+
+// config es un mètodo para configurar la propiedad app si no encuentra port utiliza el puerto 3000
+    config():void{
+        this.app.set('port', process.env.PORT || 3000);
+    }
+
+//el método routes me sirve para configurar las rutas de mis servidores
+    routes():void{
+
+    }
+
+//el método start es para inicializar el servidor ejecuta el listen
+    start(){
+        this.app.listen(this.app.get('port'),() =>{
+            //muestro pro consola el puerto del servidor activo
+            console.log('Server on port ', this.app.get('port'));
+        });
+    }
+
+}
+//guardo el objeto en una constante server y la inicializo con el mètodo start configurado anteriormente
+const server = new Server();
+server.start();
