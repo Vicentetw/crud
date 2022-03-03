@@ -6,7 +6,6 @@
   "scripts": {
     "build": "tsc -w",
     "dev": "nodemon build/index.js",
-
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,9 +15,13 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "morgan": "^1.10.0",
+    "mssql": "^8.0.2",
+    "mysql": "^2.18.1",
     "promise-mysql": "^5.1.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/morgan": "^1.9.3",
     "nodemon": "^2.0.15"
   }
 }

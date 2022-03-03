@@ -2,6 +2,9 @@ import express, {Application} from 'express';
 //importo los dos archivos ts que he creado en la carpeta routes cuando queda subrayado en rojo es que el archivo està vacìo
 import indexRoutes from './routes/indexRoutes';
 import gamesRoutes from './routes/gamesRoutes';
+//2- ahora importo los módulos morgan (para ver peticiones GET PUT) y cors (ANGULAR PUED EPEDIR DATOS AL SERVIDOR), si  aparece en rojo instalo los mòdulos con npm i @types/morgan @types/cors
+import morgan from 'morgan';
+import cors from 'cors';
 
 class Server {
 
@@ -19,13 +22,18 @@ class Server {
 // config es un mètodo para configurar la propiedad app si no encuentra port utiliza el puerto 3000
     config():void{
         this.app.set('port', process.env.PORT || 3000);
+        this.app.use(morgan('dev'));
+        this.app.use(cors());
+        //ahora agrego desde express dos configuraciones para que el servidor entienda el formato json y otro por si se envìa httml
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({extended: false}));
     }
 
 //el método routes me sirve para configurar las rutas de mis servidores
-//this.app.use(indexRoutes); por defecto va a http://localhost:3000/
+//this.app.use(indexRoutes); o this.app.use('/', indexRoutes); por defecto va a http://localhost:3000/
 // para definir otra ruta pongo this.app.use('/api/games',gamesRoutes); sería localhost:3000/api/games/
     routes():void{
-        this.app.use(indexRoutes);
+        this.app.use('/', indexRoutes);
         this.app.use('/api/games',gamesRoutes);
     }
 
