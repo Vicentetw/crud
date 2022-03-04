@@ -9,6 +9,9 @@ class GamesController {
         database_1.default.query('DESCRIBE games');
         res.json('Hello gamesController');
     }
+    create(req, res) {
+        res.json({ text: 'creating a game' });
+    }
 }
 //ahora exporto el controlador instanciado
 const gamesController = new GamesController();

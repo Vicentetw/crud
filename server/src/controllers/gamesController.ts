@@ -7,6 +7,12 @@ public index (req: Request, res: Response) {
     pool.query('DESCRIBE games');
     res.json('Hello gamesController');
 }
+
+public create (req: Request, res : Response){
+    res.json({text: 'creating a game'});
+
+}
+
 }
 //ahora exporto el controlador instanciado
 const gamesController =new GamesController();
