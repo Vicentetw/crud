@@ -1,5 +1,7 @@
 import { Router } from "express"; //iporto método Router desde express
 //que devuelve un objeto donde voy a guardar las rutas
+import gamesController from "../controllers/gamesController";
+
 class GamesRoutes {
     //creo propiedad router del tipo Router y lo inicializo con = Router()
     public router: Router = Router();
@@ -15,7 +17,7 @@ class GamesRoutes {
     config(): void{
         //a travez del método get defino una ruta inicial, tomo el reques response y devuelvo mensane HELLO
         //para utilizar el entutador voy a index.ts y lo pongo en el mètodo routes()
-        this.router.get('/', (req, res) =>res.send('Hello gamesRoutes.ts'));
+        this.router.get('/',gamesController.index);
     }
 
 }

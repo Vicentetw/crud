@@ -1,7 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express"); //iporto método Router desde express
 //que devuelve un objeto donde voy a guardar las rutas
+const gamesController_1 = __importDefault(require("../controllers/gamesController"));
 class GamesRoutes {
     //creo un constructor para que se ejecute coando cree un nuevo objeto con new indexRoutes()
     constructor() {
@@ -14,7 +18,7 @@ class GamesRoutes {
     config() {
         //a travez del método get defino una ruta inicial, tomo el reques response y devuelvo mensane HELLO
         //para utilizar el entutador voy a index.ts y lo pongo en el mètodo routes()
-        this.router.get('/', (req, res) => res.send('Hello gamesRoutes.ts'));
+        this.router.get('/', gamesController_1.default.index);
     }
 }
 const gamesRoutes = new GamesRoutes();

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express"); //iporto método Router desde express
 //que devuelve un objeto donde voy a guardar las rutas
+const indexController_1 = require("../controllers/indexController"); //con ".." subo un nivel
 class IndexRoutes {
     //creo un constructor para que se ejecute coando cree un nuevo objeto con new indexRoutes()
     constructor() {
@@ -14,7 +15,8 @@ class IndexRoutes {
     config() {
         //a travez del método get defino una ruta inicial, tomo el reques response y devuelvo mensane HELLO
         //para utilizar el entutador voy a index.ts y lo pongo en el mètodo routes()
-        this.router.get('/', (req, res) => res.send('Hello'));
+        this.router.get('/', indexController_1.indexController.index); //saco lo que estaba despuès de la "," y pego en indexControllers.ts (req, res) =>res.send('Hello')
+        //cuando entro al directorio base va a indexController 
     }
 }
 const indexRoutes = new IndexRoutes();
