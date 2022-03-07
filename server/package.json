@@ -19,7 +19,9 @@
     "mysql": "^2.18.1",
     "mysql-promise": "^5.0.0",
     "mysql2": "^2.3.3",
-    "promise-mysql": "^5.1.0"
+    "mysql2-promise": "^0.1.4",
+    "promise-mysql": "^5.1.0",
+    "ts-sql-query": "^1.25.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

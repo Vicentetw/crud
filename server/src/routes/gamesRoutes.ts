@@ -17,7 +17,11 @@ class GamesRoutes {
     config(): void{
         //a travez del método get defino una ruta inicial, tomo el reques response y devuelvo mensane HELLO
         //para utilizar el entutador voy a index.ts y lo pongo en el mètodo routes()
-        this.router.get('/',gamesController.index);
+        this.router.get('/',gamesController.list);
+        this.router.get('/:id',gamesController.getOne);
+        this.router.post('/',gamesController.create);
+        this.router.put('/:id',gamesController.update);
+        this.router.delete('/:id',gamesController.delete);
     }
 
 }

@@ -27,6 +27,7 @@ class Server {
         //ahora agrego desde express dos configuraciones para que el servidor entienda el formato json y otro por si se envìa httml
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
+        this.app.use(express_1.default.query);
     }
     //el método routes me sirve para configurar las rutas de mis servidores
     //this.app.use(indexRoutes); o this.app.use('/', indexRoutes); por defecto va a http://localhost:3000/
